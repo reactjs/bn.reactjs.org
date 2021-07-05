@@ -207,7 +207,11 @@ ReactDOM.render(
 
 ### পারিপার্শ্বিক elements গুলোর মধ্যে Keys কে ইউনিক হতে হবে {#keys-must-only-be-unique-among-siblings}
 
+<<<<<<< HEAD
 Array এর মধ্যে ব্যবহৃত keys তাদের পারিপার্শ্বিক অন্যান্য আইটেমগুলোর মধ্যে ইউনিক হতে হবে কিন্ত গ্লোবাল ভাবে তাদের ইউনিক হওয়া দরকারি নয়। আমরা দুইটি ভিন্ন ভিন্ন array এর ক্ষেত্রে একই keys ব্যবহার করতে পারিঃ
+=======
+Keys used within arrays should be unique among their siblings. However, they don't need to be globally unique. We can use the same keys when we produce two different arrays:
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ```js{2,5,11,12,19,21}
 function Blog(props) {
