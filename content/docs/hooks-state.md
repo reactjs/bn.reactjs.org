@@ -6,9 +6,9 @@ next: hooks-effect.html
 prev: hooks-overview.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*Hooks* React 16.8 এ নতুন যোগ হয়েছে। কোন class লেখা ছাড়াই এটি আপনাকে state এবং অন্যান্য ফিচার ব্যাবহার করার সুযোগ দিচ্ছে।
 
-The [introduction page](/docs/hooks-intro.html) used this example to get familiar with Hooks:
+[পরিচিতি পাতা](/docs/hooks-intro.html) এই উদাহরণ ব্যাবহার করেছে Hooks ভালোভাবে বোঝার জন্যঃ
 
 ```js{4-5}
 import React, { useState } from 'react';
@@ -28,11 +28,11 @@ function Example() {
 }
 ```
 
-We'll start learning about Hooks by comparing this code to an equivalent class example.
+এই কোড সমতুল্য কোন Class উদাহরণ এর সাথে তুলনা করে আমরা Hooks শেখা শুরু করব।
 
-## Equivalent Class Example {#equivalent-class-example}
+## সমতুল্য Class এর উদাহরণ {#equivalent-class-example}
 
-If you used classes in React before, this code should look familiar:
+আপনি যদি আগে React Class ব্যাবহার করে থাকেন, এই কোডটি আপনার পরিচিতঃ 
 
 ```js
 class Example extends React.Component {
@@ -56,15 +56,15 @@ class Example extends React.Component {
 }
 ```
 
-The state starts as `{ count: 0 }`, and we increment `state.count` when the user clicks a button by calling `this.setState()`. We'll use snippets from this class throughout the page.
+এই state শুরু হয়েছে `{ count: 0 }` হতে, এবং আমরা `state.count` বৃদ্ধি করেছি যখন ইউজার একটি বাটন এ ক্লিক করে যেটা `this.setState()` কল করে। আমরা পুরো পৃষ্ঠা জুড়ে এই Class এর টুকিটাকি ব্যাবহার করব।
 
->Note
+>নোট
 >
->You might be wondering why we're using a counter here instead of a more realistic example. This is to help us focus on the API while we're still making our first steps with Hooks.
+> আপনি হয়ত ভাবতে পারেন আমরা কেন এখানে আরও বাস্তব উদাহরণ না দিয়ে শুধু একটি Counter ব্যাবহার করছি। এটা এজন্যই যে, এটা আমাদের API এর উপর ফোকাস করতে সাহায্য করবে যখন আমরা Hooks নিয়ে আমাদের প্রথম স্টেপ তৈরি করছি।
 
-## Hooks and Function Components {#hooks-and-function-components}
+## Hooks এবং ফাংশন কম্পোনেন্ট {#hooks-and-function-components}
 
-As a reminder, function components in React look like this:
+মনে রাখা দরকার যে, React এ ফাংশন কম্পোনেন্ট এমন হয়ঃ
 
 ```js
 const Example = (props) => {
@@ -73,7 +73,7 @@ const Example = (props) => {
 }
 ```
 
-or this:
+অথবা এমনঃ
 
 ```js
 function Example(props) {
@@ -82,13 +82,13 @@ function Example(props) {
 }
 ```
 
-You might have previously known these as "stateless components". We're now introducing the ability to use React state from these, so we prefer the name "function components".
+আপনি হয়ত আগে থেকে এগুলোকে "stateless components" হিসেবে জানেন। এখন আমরা এগুলো থেকে React state ব্যাবহার এর সক্ষমতা সম্পর্কে পরিচিত হচ্ছি, তাই আমরা এর নাম দিব "function components"।
 
-Hooks **don't** work inside classes. But you can use them instead of writing classes.
+Class এর ভিতরে Hooks **কাজ করে না**। কিন্তু আপনি Class লিখার বদলে এটা ব্যাবহার করতে পারেন।
 
-## What's a Hook? {#whats-a-hook}
+## Hook কি? {#whats-a-hook}
 
-Our new example starts by importing the `useState` Hook from React:
+আমাদের নতুন উদাহরণ শুরু হবে React থেকে `useState` ইমপোর্ট করার মাধ্যমেঃ
 
 ```js{1}
 import React, { useState } from 'react';
