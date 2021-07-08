@@ -29,27 +29,31 @@ React এর ক্ষেত্রে কিছুটা ভিন্নঃ
 </button>
 ```
 
+<<<<<<< HEAD
 আরেকটা বড় পার্থক্য হল, React এ আপনি `false` রিটার্ন করে ডিফল্ট আচরণ প্রতিরোধ করতে পারবেন না। আপনার অবশ্যই আলাদাভাবে `preventDefault` কল করতে হবে। উদাহরণস্বরূপ, সাধারণ HTML এ একটি ডিফল্ট লিংককে একটি নতুন পৃষ্ঠা খোলা থেকে বিরত রাখতে আপনি লিখতে পারেনঃ
+=======
+Another difference is that you cannot return `false` to prevent default behavior in React. You must call `preventDefault` explicitly. For example, with plain HTML, to prevent the default form behavior of submitting, you can write:
+>>>>>>> 68e4efcf93b6e589355f6aa3cbc3f3c811c0ad37
 
 ```html
-<a href="#" onclick="console.log('The link was clicked.'); return false">
-  Click me
-</a>
+<form onsubmit="console.log('You clicked submit.'); return false">
+  <button type="submit">Submit</button>
+</form>
 ```
 
 React এ, এর পরিবর্তে কোডটা এমন হতে পারেঃ
 
-```js{2-5,8}
-function ActionLink() {
-  function handleClick(e) {
+```js{3}
+function Form() {
+  function handleSubmit(e) {
     e.preventDefault();
-    console.log('The link was clicked.');
+    console.log('You clicked submit.');
   }
 
   return (
-    <a href="#" onClick={handleClick}>
-      Click me
-    </a>
+    <form onSubmit={handleSubmit}>
+      <button type="submit">Submit</button>
+    </form>
   );
 }
 ```
@@ -71,8 +75,8 @@ class Toggle extends React.Component {
   }
 
   handleClick() {
-    this.setState(state => ({
-      isToggleOn: !state.isToggleOn
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn
     }));
   }
 
