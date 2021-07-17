@@ -1,72 +1,72 @@
 ---
 id: hooks-intro
-title: Introducing Hooks
+title: হুক - সূচনা
 permalink: docs/hooks-intro.html
 next: hooks-overview.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*হুক* React 16.8 এ একটি নতুন সংযোজন। এটি ক্লাস না লিখেই state এবং Reactর আরও অন্যান্য ফিচার ব্যবহার করতে দেয়।
 
 ```js{4,5}
 import React, { useState } from 'react';
 
 function Example() {
-  // Declare a new state variable, which we'll call "count"
+  // "count" নামের একটি নতুন স্টেট ভ্যারিয়েবল বানানো হলো
   const [count, setCount] = useState(0);
 
   return (
     <div>
-      <p>You clicked {count} times</p>
+      <p>{count} বার ক্লিক হয়েছে</p>
       <button onClick={() => setCount(count + 1)}>
-        Click me
+        ক্লিক করো
       </button>
     </div>
   );
 }
 ```
 
-This new function `useState` is the first "Hook" we'll learn about, but this example is just a teaser. Don't worry if it doesn't make sense yet!
+`useState` নামক এই নতুন ফাংশন দিয়েই আমরা প্রথম "হুক" বুঝবার চেষ্টা করব, তবে এই উদাহরণ অতি সাধারণ। পরবর্তী আলোচনার মাধ্যমে আমরা এটা আরো ভালো করে বুঝবো!
 
-**You can start learning Hooks [on the next page](/docs/hooks-overview.html).** On this page, we'll continue by explaining why we're adding Hooks to React and how they can help you write great applications.
+**হুক সন্বন্ধে বিশদে জানতে দেখুন [পরবর্তী পর্যায়](/docs/hooks-overview.html)।** এখানে আমরা হুকের প্রয়োজনীয়তা এবং তা ব্যবহার করে কিভাবে অ্যপ লেখা সম্ভব তাই নিয়ে আলোচনা করব।
 
->Note
+>মনে রাখবেন
 >
->React 16.8.0 is the first release to support Hooks. When upgrading, don't forget to update all packages, including React DOM.
->React Native supports Hooks since [the 0.59 release of React Native](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059).
+>React 16.8.0 এ হুক প্রথম বার উপলব্ধ. অতএব ব্যবহার করবার সময় অন্যান্য প্যাকেজগুলি, যেমন React DOM আপডেট করতে হবে।
+>React Native এ ইতিমধ্যেই হুক উপলব্ধ [React Native এর 0.59 ভার্সন থেকে](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059)।
 
-## Video Introduction {#video-introduction}
+## ভিডিও দেখুন {#video-introduction}
 
-At React Conf 2018, Sophie Alpert and Dan Abramov introduced Hooks, followed by Ryan Florence demonstrating how to refactor an application to use them. Watch the video here:
+2018 সালে React কনফারেন্সে, সোফি অ্যালবর্ট এবং ড্যান আব্রামভ হুকের উপস্থাপনা করেন। পরবর্তীতে রায়ান ফ্লোরেন্স তার অ্যাপের মাধ্যমে হাতেকলমে হুকের প্রয়োগ করে দেখান. বিশদে দেখুন:
 
 <br>
 
 <iframe width="650" height="366" src="//www.youtube.com/embed/dpw9EHDh2bM" frameborder="0" allowfullscreen></iframe>
 
-## No Breaking Changes {#no-breaking-changes}
+## কোনো ব্রেকিং পরিবর্তন নেই {#no-breaking-changes}
 
-Before we continue, note that Hooks are:
+আমরা চালিয়ে যাওয়ার আগে মনে রাখবেন:
 
-* **Completely opt-in.** You can try Hooks in a few components without rewriting any existing code. But you don't have to learn or use Hooks right now if you don't want to.
-* **100% backwards-compatible.** Hooks don't contain any breaking changes.
-* **Available now.** Hooks are now available with the release of v16.8.0.
+* **সম্পূর্ণরূপে ঐচ্ছিক:** আপনি কোনও বিদ্যমান কোড পুনর্লিখন না করে কিছুমাত্র কম্পনেন্টে হুকস ব্যবহার চেষ্টা করতে পারেন। আপনি না চাইলে আপনাকে এখনই হুকস শিখতে বা ব্যবহার করতে হবে না।
+* **কম্প্যাটিবল:** হুকগুলিতে কোনও ব্রেকিং পরিবর্তন নেই।
+* **উপলভ্যতা:** হুকগুলি এখন v16.8.0 প্রকাশের সাথে উপলব্ধ।
 
-**There are no plans to remove classes from React.** You can read more about the gradual adoption strategy for Hooks in the [bottom section](#gradual-adoption-strategy) of this page.
+**React থেকে ক্লাস অপসারণ করার কোনও পরিকল্পনা নেই:** আপনি এই পৃষ্ঠার [নীচের অংশে)(#gradual-adoption-strategy) হুকের জন্য ধাপে ধাপে পরিবর্তনের কৌশল সম্পর্কে আরও পড়তে পারেন।
 
-**Hooks don't replace your knowledge of React concepts.** Instead, Hooks provide a more direct API to the React concepts you already know: props, state, context, refs, and lifecycle. As we will show later, Hooks also offer a new powerful way to combine them.
+**হুক আপনার React ধারণাগুলির কোনো বদল করে না** বরং, হুকগুলি আপনার ইতিমধ্যে জানা React-র ধারণাগুলির আরও সহজ API সরবরাহ করে: Props, State, Context, Ref এবং LifeCycle। আমরা পরে দেখাব যে, হুকস তাদের একসাথে ব্যবহার করার জন্য একটি নতুন শক্তিশালী উপায়ও সরবরাহ করে।
 
-**If you just want to start learning Hooks, feel free to [jump directly to the next page!](/docs/hooks-overview.html)** You can also keep reading this page to learn more about why we're adding Hooks, and how we're going to start using them without rewriting our applications.
+**আপনি যদি কেবল হুকস শিখতে শুরু করতে চান তবে নির্দ্বিধায় [সরাসরি পরবর্তী পৃষ্ঠায় ঝাঁপুন!](/docs/hooks-overview.html)** এই পৃষ্ঠায় আমরা আলোচনা করব যে কিভাবে আমরা হুক ব্যবহারের সিদ্ধান্তে এলাম, এবং কিভাবে কোনও বিদ্যমান কোড পুনর্লিখন না করে হুকস ব্যবহার করা সম্ভব।
 
-## Motivation {#motivation}
+## অনুপ্রেরণা {#motivation}
 
-Hooks solve a wide variety of seemingly unconnected problems in React that we've encountered over five years of writing and maintaining tens of thousands of components. Whether you're learning React, use it daily, or even prefer a different library with a similar component model, you might recognize some of these problems.
+হুকগুলি React-র এমন কিছু আপাতদৃষ্টিতে অসংলগ্ন সমস্যার সমাধান করে, যা গত পাঁচ বছর ধরে অসংখ্য component লিখে এবং তা মেইন্টেন করতে গিয়ে আমরা অনুভব করে থাকি. আপনি React-র নবিশ হন, অথবা প্রতিদিন এটি ব্যবহার করে থাকেন, বা এমনকি অন্য কোনও অনুরূপ Component-মডেলযুক্ত একটি ভিন্ন লাইব্রেরি পছন্দ করুন না কেন, আপনি এই সমস্যার কিছুটি চিনতে পারেন।
 
-### It's hard to reuse stateful logic between components {#its-hard-to-reuse-stateful-logic-between-components}
+### বিভিন্ন Components-র মধ্যে stateful logic-র পুনর্ব্যবহার {#its-hard-to-reuse-stateful-logic-between-components}
 
-React doesn't offer a way to "attach" reusable behavior to a component (for example, connecting it to a store). If you've worked with React for a while, you may be familiar with patterns like [render props](/docs/render-props.html) and [higher-order components](/docs/higher-order-components.html) that try to solve this. But these patterns require you to restructure your components when you use them, which can be cumbersome and make code harder to follow. If you look at a typical React application in React DevTools, you will likely find a "wrapper hell" of components surrounded by layers of providers, consumers, higher-order components, render props, and other abstractions. While we could [filter them out in DevTools](https://github.com/facebook/react-devtools/pull/503), this points to a deeper underlying problem: React needs a better primitive for sharing stateful logic.
+React নিজে থেকে কোনও component-র সাথে পুনরায় ব্যবহারযোগ্য লজিক "সংযুক্ত" করার কোনও উপায় সরবরাহ করে না (উদাহরণস্বরূপ, কোনও স্টোরের সাথে সংযুক্ত করে)। আপনি যদি কিছুকাল যাবত React নিয়ে কাজ করে থাকেন তবে আপনি এই ধরণের নিয়মগুলির সাথে পরিচিত হতে পারেন, [render props](/docs/render-props.html) এবং [higher-order components](/docs/higher-order-components.html), যা কিনা এই যাবতীয় সমস্যা সমাধানের চেষ্টা করে। তবে এই নিদর্শনগুলির জন্য আপনার componentগুলি ব্যবহার করার সময় আপনাকে পুনর্লিখন করা দরকার যা পরিশ্রমসাধ্য হতে পারে এবং কোড অনুসরণ করা আরও শক্ত করে তোলে। আপনি যদি React DevTool-এ একটি সাধারণ React অ্যাপ্লিকেশন দেখেন, তবে আপনি সম্ভবত providers, consumers, higher-order components, render props এবং অন্যান্য abstraction-র স্তর দ্বারা বেষ্টিত Component-গুলির একটি "wrapper hell"-কে দেখতে পাবেন। যদিও আমরা এগুলি [DevTools-এ ফিল্টার](https://github.com/facebook/react-devtools/pull/503) করতেই পারি, এটি একটি গভীর অন্তর্নিহিত সমস্যার দিকে ইঙ্গিত করে: stateful logic পুনরায় ব্যবহারযোগ্য করে তোলার জন্য React-এ প্র​য়োজন উত্তমতর প্রক্রিয়া।
 
-With Hooks, you can extract stateful logic from a component so it can be tested independently and reused. **Hooks allow you to reuse stateful logic without changing your component hierarchy.** This makes it easy to share Hooks among many components or with the community.
+এমত অবস্থায় হুক ব্যবহার করে, **আমরা component থেকে stateful logic আলাদা করে নিজের মত টেস্ট ও পুনর্ব্যবহার করতে পারি এবং এর জন্য component-র শ্রেণিবিন্যাসের কোনো পরিবর্তনের প্র​য়োজন হয়না।** এর ফলে বিভিন্ন component-র মধ্যে হুক ব্যবহার করা অতি সহজ এবং অন্যান্যদের সাথে শেয়ার করা সম্ভব।
 
-We'll discuss this more in [Building Your Own Hooks](/docs/hooks-custom.html).
+[পরবর্তীতে](/docs/hooks-custom.html) আমরা এই নিয়ে আরও অধিক আলোচনা করব.
 
 ### Complex components become hard to understand {#complex-components-become-hard-to-understand}
 
